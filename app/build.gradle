@@ -1,0 +1,17 @@
+apply plugin: 'com.android.application'
+
+apply from :"../common.gradle"
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.shuisechanggong.ktdemo"
+        minSdkVersion 19
+        targetSdkVersion 28
+    }
+}
+
+dependencies {
+    implementation project(":base")
+
+}
