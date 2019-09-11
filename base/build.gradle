@@ -3,4 +3,12 @@ apply from :"../common.gradle"
 
 android {
     resourcePrefix "base"
+
+    defaultConfig {
+        versionCode 1
+        versionName "1.0.0-alpha-0000"
+    }
+
 }
+
+apply from:'publish.gradle'
