@@ -1,6 +1,5 @@
-apply plugin: 'maven-publish'
 apply plugin: 'com.jfrog.bintray'
-
+apply from: 'publish/gradle-mavenizer.gradle'
 
 def String getLocalProperty(String key) {
     Properties properties = new Properties()
@@ -27,39 +26,22 @@ ext {
 
 }
 
-
 version = publish_version
 group = publish_group_id
 
 
+project.ext{
 
-publishing {
-    publications {
-        Production(MavenPublication) {
-            artifact("$buildDir/outputs/aar/${project.name}-release.aar")
-            groupId publish_group_id
-            artifactId publish_artifactId
-            version publish_version
-
-
-            pom.withXml {
-                def dependenciesNode = asNode().appendNode('dependencies')
-
-                // Iterate over the implementation dependencies (we don't want the test ones), adding a <dependency> node for each
-                configurations.implementation.allDependencies.each {
-                    // Ensure dependencies such as fileTree are not included in the pom.
-                    if (it.name != 'unspecified') {
-                        def dependencyNode = dependenciesNode.appendNode('dependency')
-                        dependencyNode.appendNode('groupId', it.group)
-                        dependencyNode.appendNode('artifactId', it.name)
-                        dependencyNode.appendNode('version', it.version)
-                    }
-                }
-            }
-
-        }
-    }
+    mavDevelopers = ["bo":"bworkid"]
+    mavSiteUrl = "https://github.com/OoadaioO/ktdemo"
+    mavGitUrl = mavSiteUrl + '.git'
+    mavProjectName = 'base'
+    mavPublishToInternalRepo = true
+    mavRepoInternalUrl = "${project.buildDir}/repo"
+    mavLibraryLicenses = ["Apache-2.0":'http://www.apache.org/licenses/LICENSE-2.0.txt']
+    mavLibraryDescription = "$publish_description"
 }
+
 
 
 bintray {
@@ -72,7 +54,9 @@ bintray {
         description = publish_description
         licenses = publish_licenses
         vcsUrl = publish_vcs_url
-
+        publish = true // 上传，并发布
+        publicDownloadNumbers = true
+        dryRun = true // true-本地执行，不上传，false-执行上传
         version {
             name = publish_version
             desc = publish_package_desc
@@ -81,7 +65,7 @@ bintray {
         }
     }
 
-    publications = ['Production']
+    publications = ['mavenPublish'] // 本地maven配置
 }
 
 tasks.withType(JavaCompile) {
