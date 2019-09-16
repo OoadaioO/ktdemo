@@ -1,4 +1,4 @@
-package com.shuisechanggong.ktdemo.homepage
+package com.shuisechanggong.ktdemo.view
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope

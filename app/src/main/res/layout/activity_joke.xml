@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#eeeeee"
-    tools:context="com.shuisechanggong.ktdemo.homepage.JokeActivity">
+    tools:context="com.shuisechanggong.ktdemo.view.JokeActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"

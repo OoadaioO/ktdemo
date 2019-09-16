@@ -1,4 +1,4 @@
-package com.shuisechanggong.ktdemo.homepage
+package com.shuisechanggong.ktdemo.view
 
 import android.graphics.Rect
 import android.view.LayoutInflater

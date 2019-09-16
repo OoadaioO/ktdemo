@@ -14,9 +14,10 @@ android {
 
 dependencies {
 
-    //*
-    implementation project(':base')
     /*
+    implementation project(':base')
+    /*/
     implementation 'com.shuisechanggong:base:1.0.0-alpha-0000'
+    implementation 'com.shuisechanggong:violet:1.0.0-alpha-0000'
     //*/
 }
