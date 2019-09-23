@@ -22,7 +22,8 @@
             </intent-filter>
         </activity>
         <activity android:name="com.shuisechanggong.ktdemo.view.JokeActivity" />
-        <activity android:name="com.shuisechanggong.ktdemo.view.QRCodeActivity"></activity>
+        <activity android:name="com.shuisechanggong.ktdemo.view.ImageActivity" />
+        <activity android:name="com.shuisechanggong.ktdemo.view.QRCodeActivity"/>
     </application>
 
 </manifest>

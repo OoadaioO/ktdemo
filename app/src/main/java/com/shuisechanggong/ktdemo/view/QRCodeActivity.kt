@@ -11,15 +11,21 @@ import android.provider.Settings
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.ViewModelProvider
+import com.shuisechanggong.base.BaseActivity
 import com.shuisechanggong.ktdemo.R
 import com.shuisechanggong.violet.ScanQRCodeFragment
 import kotlinx.android.synthetic.main.activity_qrcode.*
 
-class QRCodeActivity : AppCompatActivity() {
+class QRCodeActivity : BaseActivity() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun initViewModel(provider: ViewModelProvider) {
+    }
+
+    override fun initViews() {
         setContentView(R.layout.activity_qrcode)
+        toolbar.setNavigationOnClickListener { finish() }
+
 
 
         btnOpenInBrowser.setOnClickListener{
@@ -75,6 +81,7 @@ class QRCodeActivity : AppCompatActivity() {
             supportFragmentManager.beginTransaction().replace(R.id.container,scanQRCodeFragment, tag).commitAllowingStateLoss()
 
         }
+
     }
 
     private fun openBrowser(content: String) {
